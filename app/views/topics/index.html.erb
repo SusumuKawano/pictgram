@@ -14,11 +14,23 @@
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
               <% end %>
             <% end %>
+           
+            <%= link_to comments_path(topic_id: topic.id), method: :post do %> 
+               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% end %>
+          
             
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
+            
+            <% topic.comments.each do |comment| %>
+            <p class="topic-text">
+              <%= comment.body %>
+            </p>
+            <% end %>
+            
+            
           </div>
         </div>
       </div>
