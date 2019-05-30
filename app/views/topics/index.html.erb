@@ -15,13 +15,17 @@
               <% end %>
             <% end %>
            
-            <%= link_to comments_path(topic_id: topic.id), method: :post do %> 
+            <%= link_to new_comment_path(topic_id: topic.id), method: :get do %> 
                <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% end %>
           
             
             <p class="topic-text">
               <%= topic.description %>
+            </p>
+            
+            <p class="topic-text">
+              <%= 'コメント' %>
             </p>
             
             <% topic.comments.each do |comment| %>
