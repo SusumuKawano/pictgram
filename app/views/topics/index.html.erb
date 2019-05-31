@@ -11,10 +11,15 @@
             
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
-              <% end %>
-            <% end %>
-           
+              <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+              <% end %> 
+            <% else %>
+　            <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+　            <%= image_tag 'icons/heart-red.png', class: 'topic-index-icon' %>
+　          　<% end %>
+　          <% end %>
+　          <%= topic.favorite_users.count %> 
+            
             <%= link_to new_comment_path(topic_id: topic.id), method: :get do %> 
                <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% end %>
@@ -41,3 +46,6 @@
     <% end %>
   </div>
 </div>
+
+
+            
